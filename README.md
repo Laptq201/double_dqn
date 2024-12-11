@@ -60,36 +60,25 @@ pip install -r requirements/requirements-cloud.txt
 pip install -r requirements/requirements-memory_gym.txt
 ```
 
+
 To run training scripts in other games:
-```
+```bash
 poetry shell
 
 # classic control
 python cleanrl/dqn.py --env-id CartPole-v1
-python cleanrl/ppo.py --env-id CartPole-v1
-python cleanrl/c51.py --env-id CartPole-v1
+python cleanrl/ddqn.py --env-id CartPole-v1
+
 
 # atari
 poetry install -E atari
 python cleanrl/dqn_atari.py --env-id BreakoutNoFrameskip-v4
-python cleanrl/c51_atari.py --env-id BreakoutNoFrameskip-v4
-python cleanrl/ppo_atari.py --env-id BreakoutNoFrameskip-v4
-python cleanrl/sac_atari.py --env-id BreakoutNoFrameskip-v4
+python cleanrl/ddqn_atari.py --env-id BreakoutNoFrameskip-v4
 
-# NEW: 3-4x side-effects free speed up with envpool's atari (only available to linux)
-poetry install -E envpool
-python cleanrl/ppo_atari_envpool.py --env-id BreakoutNoFrameskip-v4
-# Learn Pong-v5 in ~5-10 mins
-# Side effects such as lower sample efficiency might occur
-poetry run python ppo_atari_envpool.py --clip-coef=0.2 --num-envs=16 --num-minibatches=8 --num-steps=128 --update-epochs=3
-
-# procgen
-poetry install -E procgen
-python cleanrl/ppo_procgen.py --env-id starpilot
-python cleanrl/ppg_procgen.py --env-id starpilot
-
-# ppo + lstm
-poetry install -E atari
-python cleanrl/ppo_atari_lstm.py --env-id BreakoutNoFrameskip-v4
 ```
 
+To run video with atari (require: parameter DQN model.pth)
+- Change the directory (for save model) in the testing_video.py
+```
+python testing_video.py
+```
