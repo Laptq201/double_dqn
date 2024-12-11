@@ -1,8 +1,8 @@
-# CleanRL (Clean Implementation of RL Algorithms)
-
-Thanks for cleanrl (https://github.com/vwxyzjn/cleanrl) from CleanRL: High-quality Single-file Implementations of Deep Reinforcement Learning Algorithms
+# DDQN with CleanRL
 
 This is my lab to implement Double DQN into cleanrl - UIT.
+
+Thanks for cleanrl (https://github.com/vwxyzjn/cleanrl) from CleanRL: High-quality Single-file Implementations of Deep Reinforcement Learning Algorithms
 
 
 ## Get started
