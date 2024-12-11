@@ -240,6 +240,16 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
                         data.next_observations).max(dim=1)
                     td_target = data.rewards.flatten() + args.gamma * target_max * \
                         (1 - data.dones.flatten())
+                    '''
+                    Double DQN
+                    '''
+                    q_values = q_network(data.next_observations)
+                    next_actions = torch.argmax(q_values, dim=1)
+                    target_max = target_network(data.next_observations).gather(
+                        1, next_actions.unsqueeze(1)).squeeze()
+                    td_target = data.rewards.flatten() + args.gamma * target_max * \
+                        (1 - data.dones.flatten())
+                    
                 old_val = q_network(data.observations).gather(
                     1, data.actions).squeeze()
                 loss = F.mse_loss(td_target, old_val)
