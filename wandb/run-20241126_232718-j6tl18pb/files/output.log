@@ -1,0 +1,8 @@
+/home/lapquang/anaconda3/envs/lab3_CS211/lib/python3.9/site-packages/wandb/sdk/lib/import_hooks.py:243: DeprecationWarning: Deprecated since Python 3.4. Use importlib.util.find_spec() instead.
+  loader = importlib.find_loader(fullname, path)
+Traceback (most recent call last):
+  File "/home/lapquang/code/cleanrl/cleanrl/dqn_atari.py", line 182, in <module>
+    rb = ReplayBuffer(
+  File "/home/lapquang/anaconda3/envs/lab3_CS211/lib/python3.9/site-packages/stable_baselines3/common/buffers.py", line 202, in __init__
+    self.observations = np.zeros((self.buffer_size, self.n_envs, *self.obs_shape), dtype=observation_space.dtype)
+numpy.core._exceptions._ArrayMemoryError: Unable to allocate 26.3 GiB for an array with shape (1000000, 1, 4, 84, 84) and data type uint8

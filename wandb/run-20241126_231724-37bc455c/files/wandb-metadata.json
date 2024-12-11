@@ -1,0 +1,116 @@
+{
+    "os": "Linux-6.8.0-49-generic-x86_64-with-glibc2.39",
+    "python": "3.9.20",
+    "heartbeatAt": "2024-11-26T16:17:25.518495",
+    "startedAt": "2024-11-26T16:17:24.346033",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--seed",
+        "22520752",
+        "--env-id",
+        "CartPole-v0",
+        "--total-timesteps",
+        "50000",
+        "--capture_video",
+        "--track",
+        "--wandb-project-name",
+        "cleanrltest"
+    ],
+    "state": "running",
+    "program": "/home/lapquang/code/cleanrl/cleanrl/dqn.py",
+    "codePath": "cleanrl/dqn.py",
+    "git": {
+        "remote": "https://github.com/vwxyzjn/cleanrl.git",
+        "commit": "e648ee2dc8960c59ed3ee6caf9eb0c34b497958f"
+    },
+    "email": "laptruongquang@gmail.com",
+    "root": "/home/lapquang/code/cleanrl",
+    "host": "laptq",
+    "username": "lapquang",
+    "executable": "/home/lapquang/anaconda3/envs/lab3_CS211/bin/python",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 3745.496333333334,
+        "min": 400.0,
+        "max": 4056.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4027.787,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 4027.926,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 2919.962,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 3079.294,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 1795.229,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 3889.0,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 4042.166,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 4042.713,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 4042.843,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 4042.298,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 4038.6,
+            "min": 400.0,
+            "max": 4056.0
+        },
+        {
+            "current": 4042.825,
+            "min": 400.0,
+            "max": 4056.0
+        }
+    ],
+    "disk": {
+        "total": 467.34664154052734,
+        "used": 217.12501525878906
+    },
+    "gpu": "NVIDIA GeForce GTX 1650",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce GTX 1650",
+            "memory_total": 4294967296
+        }
+    ],
+    "memory": {
+        "total": 14.960079193115234
+    }
+}
