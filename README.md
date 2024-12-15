@@ -11,6 +11,8 @@ Prerequisites:
 * Python >=3.7.1,<3.11
 * [Poetry 1.2.1+](https://python-poetry.org)
 
+NOTE: Check example training file: training_BreakOut.ipynb, training_CartPole.ipynb (Those files were used to train on Kaggle.)
+
 To run experiments locally, give the following a try:
 
 ```bash
