@@ -16,7 +16,7 @@ NOTE: Check example training file: training_BreakOut.ipynb, training_CartPole.ip
 To run experiments locally, give the following a try:
 
 ```bash
-git clone https://github.com/Laptq201/lab_double_dqn.git && cd cleanrl
+git clone https://github.com/Laptq201/double_dqn.git && cd cleanrl
 poetry install
 
 # alternatively, you could use `poetry shell` and do
