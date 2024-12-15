@@ -11,7 +11,6 @@ from torch import nn
 import random
 import numpy as np
 
-# Define QNetwork as used during training
 
 
 class QNetwork(nn.Module):
@@ -58,8 +57,7 @@ def make_env(env_id, seed=22520750, record_video=False, run_name=""):
     return env
 
 
-# Load the trained model
-env = make_env("BreakoutNoFrameskip-v4", seed=22520750, record_video=True)
+env = make_env("BreakoutNoFrameskip-v4", seed=22520752, record_video=True)
 #     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 #     q_network = QNetwork(env.action_space.n).to(device)
 #     model_path = "/home/lapquang/Downloads/dqn_atari.cleanrl_model"
@@ -68,40 +66,38 @@ q_network = QNetwork(action_space_n=env.action_space.n).to(device)
 
 # Load your pre-trained model (assuming the model is saved as 'dqn_model.pth')
 q_network.load_state_dict(torch.load(
-    "/home/lapquang/Downloads/dqn_atari.cleanrl_model", map_location=device))
+    "/home/lapquang/Desktop/Atari-BreakOut/22520752_ddqn/ddqn_atari.cleanrl_model", map_location=device))
 q_network.eval()
 
-# Create the environment
 env = make_env('BreakoutNoFrameskip-v4')
 
-# Number of episodes to visualize
 num_episodes = 30
+
+epsilon = 0.02  # Exploration rate 
 
 # Loop over episodes to visualize the model
 for episode in range(num_episodes):
     # Get the first observation from the reset
-    obs = env.reset(seed=episode)[0]
+    obs, _ = env.reset(seed=episode)
     done = False
     total_reward = 0
     while not done:
-        # Render the environment to visualize
         env.render()
+        obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(device)
 
-        # Preprocess observation and feed it into the QNetwork to get Q-values
-        obs_tensor = torch.tensor(
-            obs, dtype=torch.float32).unsqueeze(0).to(device)
+        # Action selection (epsilon-greedy)
+        if random.random() < epsilon:
+            action = env.action_space.sample()  # Choose a random action
+        else:
+            with torch.no_grad():
+                q_values = q_network(obs_tensor)
+                action = torch.argmax(q_values, dim=1).item()  # Choose the action with the highest Q-value
 
-        # Get action from the QNetwork (use greedy action, i.e., pick the highest Q-value)
-        with torch.no_grad():
-            q_values = q_network(obs_tensor)
-            action = torch.argmax(q_values, dim=1).item()
-
-        # Take the action in the environment
         obs, reward, done, _, info = env.step(action)
         total_reward += reward
-
+        #print(f"Episode {episode + 1}, Action: {action}, Reward: {reward}, Done: {done}")
     # Print the total reward for the episode
-    if episode + 1 % 5 == 0:
+    if (episode + 1) % 1 == 0:
         print(f"Episode {episode + 1}: Total Reward = {total_reward}")
 
 env.close()

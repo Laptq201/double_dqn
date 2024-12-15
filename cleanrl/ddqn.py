@@ -207,11 +207,11 @@ poetry run pip install "stable_baselines3==2.0.0a1"
                     # td_target = data.rewards.flatten() + args.gamma * target_max * (1 - data.dones.flatten())
                     '''
                     Double DQN logic:
-                        - Double Q-Learning uses Q-network 1 to select actions and Q-network 2 to evaluate the selected actions.
-                        -> Which is Q-network 1? q_network?
-                        -> Which is Q-network 2? target_network?
-                    target_q_values =  select_network(data.next_observations)
-                    td_target = data.rewards.flatten() + args.gamma * target_q_values.gather(1, torch.argmax(q_network(data.next_observations), dim=1).unsqueeze(1)).squeeze() * (1 - data.dones.flatten())
+                    - Double Q-Learning uses Q-network 1 to select actions and Q-network 2 to evaluate the selected actions.
+                    -> Which is Q-network 1? q_network?
+                    -> Which is Q-network 2? target_network?
+                        target_q_values =  select_network(data.next_observations)
+                        td_target = data.rewards.flatten() + args.gamma * target_q_values.gather(1, torch.argmax(q_network(data.next_observations), dim=1).unsqueeze(1)).squeeze() * (1 - data.dones.flatten())
                     online_q_values = q_network(data.observations)
 
                     loss = F.mse_loss(td_target, online_q_values.gather(1, data.actions).squeeze())
@@ -220,6 +220,7 @@ poetry run pip install "stable_baselines3==2.0.0a1"
                     next_actions = torch.argmax(next_q_values, dim=1).unsqueeze(1)
                     target_q_values = target_network(data.next_observations).gather(1, next_actions).squeeze()
                     td_target = data.rewards.flatten() + args.gamma * target_q_values * (1 - data.dones.flatten())
+
  
                 old_val = q_network(data.observations).gather(1, data.actions).squeeze()
                 loss = F.mse_loss(td_target, old_val)
