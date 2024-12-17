@@ -57,7 +57,7 @@ def make_env(env_id, seed=22520750, record_video=False, run_name=""):
     return env
 
 
-env = make_env("BreakoutNoFrameskip-v4", seed=22520752, record_video=True)
+env = make_env("BreakoutNoFrameskip-v4", seed=22520670, record_video=True)
 #     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 #     q_network = QNetwork(env.action_space.n).to(device)
 #     model_path = "/home/lapquang/Downloads/dqn_atari.cleanrl_model"
